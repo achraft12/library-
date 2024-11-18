@@ -13,6 +13,7 @@
         <template v-if="isLoggedIn()">
           <li><router-link to="/profile">{{ userUsername }}</router-link></li>
           <li><router-link to="/borrowedbooks">Borrowed Books</router-link></li>
+          <li><router-link to="/EventManagement">events</router-link></li>
           <li><button @click="signOut">Sign Out</button></li>
 
           <!-- Notifications -->
