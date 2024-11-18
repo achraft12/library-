@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <nav>
       <div class="logo">
-        <router-link to="/BookPage">
+        <router-link to="/">
           <img src="../assets/library_logo_4k_without_background-removebg-preview.png" alt="Library Logo">
         </router-link>
       </div>
