@@ -7,7 +7,7 @@ const multer = require('multer');
 const path = require('path');
 const app = express();
 const PORT = 3000;
-
+require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
@@ -37,21 +37,28 @@ app.use(express.json());
 
 
 
-// MySQL connection setup
+ // Import the .env file
+
+// Create a MySQL connection pool using credentials from the .env file
+  // Make sure this line is at the top of your file
+
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'Taki', 
-  password: 'SqlServer/20', 
-  database: 'library_system' 
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
-connection.connect(err => {
+// Use the promise-based connect method with mysql2
+connection.connect((err) => {
   if (err) {
-    console.error('Error connecting to MySQL:', err);
+    console.error('Error connecting: ' + err.stack);
     return;
   }
-  console.log('Connected to MySQL');
+  console.log('Connected as id ' + connection.threadId);
 });
+
+
 
 // getting books
 app.get('/books', (req, res) => {
